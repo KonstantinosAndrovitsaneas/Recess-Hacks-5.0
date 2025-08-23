@@ -23,7 +23,3 @@ void BankAccount::withdraw(double amount) {
 		balance -= amount;
 	}
 }
-
-void BankAccount::display_balance() {
-	std::cout << "You have " << balance << " in your account." << std::endl;
-}

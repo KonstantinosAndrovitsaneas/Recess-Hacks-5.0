@@ -6,11 +6,9 @@ class BankAccount
 
 	BankAccount(
 		double new_balance
-
 	);
 
 	double get_balance();
 	void deposit(double amount);
 	void withdraw(double amount);
-	void display_balance();
 };

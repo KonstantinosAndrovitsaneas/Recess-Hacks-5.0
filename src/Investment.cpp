@@ -1,7 +1,8 @@
 #include "Investment.h"
 #include <iostream>
 #include <random>
-Investment:Investment(
+
+Investment::Investment(
 
 	double new_capital,
 	double new_growth_rate,
@@ -9,9 +10,7 @@ Investment:Investment(
 )
 	: capital(new_capital), growth_rate(new_growth_rate){}
 
-
 double Investment::update_value() {
-
 	double max = capital * (growth_rate / 100);
 	double min = capital * (growth_rate / 100) * -1;
 
@@ -23,7 +22,6 @@ double Investment::update_value() {
 	capital += dist(gen);
 
 	return capital;
-
 }
 
 double Investment::get_capital() {
