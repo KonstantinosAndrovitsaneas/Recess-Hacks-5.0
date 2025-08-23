@@ -9,7 +9,7 @@ static int id = 0;
 // NEEDS WORK
 struct TileTemplate CreateTile(char* name, char* img) {
 	struct TileTemplate temp;
-	temp.image = LoadTexture(img);
+	temp.image = LoadTexture();
 	temp.id = id;
 	id++;
 	temp.name = name;
