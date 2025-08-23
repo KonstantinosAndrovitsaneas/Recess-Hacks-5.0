@@ -14,6 +14,11 @@ int main() {
     const int screenWidth = 800;
     const int screenHeight = 450;
 
+     BankAccount account(1000.0);
+
+        account.deposit(500.0);
+        std::cout << account.get_balance();
+   
     InitWindow(screenWidth, screenHeight, "raylib [core] example - keyboard input");
 
     Vector2 ballPosition = { (float)screenWidth / 2, (float)screenHeight / 2 };

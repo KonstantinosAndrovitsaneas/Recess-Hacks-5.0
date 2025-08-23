@@ -1,5 +1,5 @@
 #pragma once
-
+#include <iostream>
 class Investment {
 public:
 	double capital;
