@@ -60,12 +60,12 @@ struct Tile* Grid::GetTile(struct Vec3 position) {
 
 
 // TODO: Render code needs tweaking
-void Grid::RenderTileSet() {
-	for (struct Tile tile : data) {
-		DrawRectangle(tile.position.x * 80, tile.position.y * 80, 80, 80, MAROON);
-		DrawTexture(tile.image, tile.position.x, tile.position.y, WHITE);
-	}
-}
+//void Grid::RenderTileSet() {
+//	for (struct Tile tile : data) {
+//		DrawRectangle(tile.position.x * 80, tile.position.y * 80, 80, 80, MAROON);
+//		DrawTexture(tile.image, tile.position.x, tile.position.y, WHITE);
+//	}
+//}
 
 //Grid::Grid(struct Vec3 size, char* name) {
 //	size = size;

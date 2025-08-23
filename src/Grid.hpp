@@ -33,9 +33,9 @@ public:
 
 	struct Tile* GetTile(struct Vec3 position);
 
-	//void ChangeTileImage(struct Vec3 position);
+	void ChangeTileImage(struct Vec3 position);
 
-	//void RenderTileSet();
+	void RenderTileSet();
 
 private:
 	std::vector<struct Tile> data;
