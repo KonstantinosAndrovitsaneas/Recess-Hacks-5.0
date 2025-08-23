@@ -1,7 +1,7 @@
 #pragma once
 
 class Investment {
-
+public:
 	double capital;
 	double growth_rate;
 	std::string name;
@@ -12,7 +12,6 @@ class Investment {
 	double new_growth_rate,
 	std::string new_name	
 	);
-
 
 	double update_value();
 	double get_capital();
