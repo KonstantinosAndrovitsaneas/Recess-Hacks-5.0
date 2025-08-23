@@ -9,6 +9,8 @@
 #include "imgui.h"
 #include "rlImGui.h"
 
+#include "Grid.hpp"
+
 
 int main() {
     const int screenWidth = 800;
@@ -22,6 +24,27 @@ int main() {
     //--------------------------------------------------------------------------------------
 
     rlImGuiSetup(true);
+    Vec3 pos;
+
+    pos.x = 10;
+    pos.y = 10;
+    pos.z = 10;
+    
+    Grid grid;
+
+    struct Tile tile;
+
+    tile.id = 1;
+
+    grid.PlaceTile({5, 5, 5}, tile);
+    grid.PlaceTile({ 0, 0, 0 }, tile);
+    grid.PlaceTile({ 10, 10, 10 }, tile);
+
+    struct Tile* t = grid.GetTile({ 5, 5, 5 });
+
+    std::cout << t->id << "\n";
+    t->id = 5;
+    std::cout << t->id << "\n";
 
     // Main game loop
     while (!WindowShouldClose())    // Detect window close button or ESC key
@@ -43,6 +66,8 @@ int main() {
         DrawText("move the ball with arrow keys", 10, 10, 20, DARKGRAY);
 
         DrawCircleV(ballPosition, 50, MAROON);
+
+        //grid.RenderTileSet();
 
         rlImGuiBegin();
 
