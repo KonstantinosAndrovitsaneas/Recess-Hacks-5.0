@@ -1,23 +1,21 @@
-#include "Bank_Account.h"
+#include "BankAccount.hpp"
 #include <iostream>
 
-Bank_Account::Bank_Account(
+BankAccount::BankAccount(
 
 	double new_balance)
 
 	: balance(new_balance) {}
 
-
-
-double Bank_Account::get_balance() {
+double BankAccount::get_balance() {
 	return balance;
 }
 
-void Bank_Account::deposit(double amount) {
+void BankAccount::deposit(double amount) {
 	balance += amount;
 }
 
-void Bank_Account::withdraw(double amount) {
+void BankAccount::withdraw(double amount) {
 	if (amount > balance) {
 		std::cout << "Insufficient funds" << std::endl;
 	}
@@ -26,7 +24,6 @@ void Bank_Account::withdraw(double amount) {
 	}
 }
 
-void Bank_Account::display_balance() {
+void BankAccount::display_balance() {
 	std::cout << "You have " << balance << " in your account." << std::endl;
-
 }

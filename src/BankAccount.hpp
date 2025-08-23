@@ -1,9 +1,10 @@
 #pragma once
-class Bank_Account
+
+class BankAccount
 {
 	double balance;
 
-	Bank_Account(
+	BankAccount(
 		double new_balance
 
 	);
@@ -13,4 +14,3 @@ class Bank_Account
 	void withdraw(double amount);
 	void display_balance();
 };
-
