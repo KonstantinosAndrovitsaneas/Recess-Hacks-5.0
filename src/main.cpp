@@ -59,7 +59,6 @@ int main() {
     else {
         std::cout << "Tile not found!\n";
     }
-    std::vector<int> tilemap = LoadTileMap((char*)"resources/map.csv");
 
     // Main game loop
     while (!WindowShouldClose())    // Detect window close button or ESC key
@@ -69,7 +68,7 @@ int main() {
         ClearBackground(RAYWHITE);
 
         //CalculateGridPosition();
-        grid.RenderTileSet();
+        //grid.RenderTileSet();
 
        // RenderTileLayer((char*)"resources/tile.png", tilemap, { 0, 0 }, { 30, 20 });
 
