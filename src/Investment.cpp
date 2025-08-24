@@ -5,7 +5,7 @@
 
 std::vector<Investment*> Investment::allInvestments;
 
-Investment::Investment(double new_capital, double new_growth_rate, const std::string& new_name)
+Investment::Investment(double new_capital, double new_growth_rate, const char* new_name)
     : capital(new_capital), growth_rate(new_growth_rate), name(new_name)
 {
     allInvestments.push_back(this);
