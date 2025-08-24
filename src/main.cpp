@@ -8,10 +8,17 @@
 #include "rlImGui.h"
 #include "Grid.hpp"
 #include "Shop.hpp"
+//#include "raytile/ray_tilemap.h"
 
 
 int main() {
-   
+    /*RayTiled::TileMap Map;
+    RayTiled::LoadTileMap("resources/map.tmx", Map);
+    RayTiled::UserLayer* TestUserLayer = nullptr;
+    TestUserLayer = RayTiled::InsertTileMapLayer<RayTiled::UserLayer>(Map, Map.Layers.back()->LayerId);*/
+    //TestUserLayer->DrawFunction = DrawUserLayer;
+
+    Camera2D ViewCamera = { 0 };
     
     Investment* nike =  new Investment(1000.0, 0.07, "Nike");
 
@@ -68,9 +75,13 @@ int main() {
         ClearBackground(RAYWHITE);
 
         //CalculateGridPosition();
-        grid.RenderTileSet();
+        //grid.RenderTileSet();
+        BeginMode2D(ViewCamera);
+        //DrawTileMap(Map, &ViewCamera);
 
-       // RenderTileLayer((char*)"resources/tile.png", tilemap, { 0, 0 }, { 30, 20 });
+        EndMode2D();
+
+        //RenderTileLayer((char*)"resources/tile.png", tilemap, { 0, 0 }, { 30, 20 });
 
         rlImGuiBegin();
         Tile* clickedTile = grid.GetClickedTile();

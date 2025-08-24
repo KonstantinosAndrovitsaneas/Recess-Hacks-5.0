@@ -1,5 +1,5 @@
 
-//#include "raylib/raylib.h"
+#include "raylib/raylib.h"
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -115,60 +115,61 @@ Tile* Grid::GetClickedTile()
 //	name = name;
 //}
 
-std::string LoadFileContent(char* file) {
-	std::string total_file;
-
-	std::string line;
-	std::ifstream f(file);
-	while (std::getline(f, line))
-	{
-		total_file.append(line);
-	}
-	f.close();
-
-	return total_file;
-}
-
-inline Vector2 ConvertTileIDToPos(int number, Vector2 tile_count) {
-	//return { number / tile_count.x, number % tile_count.x };
-	return {};
-}
-
-Rectangle CalculateTileCropDimentions(int number, Vector2 tileset_size, Vector2 tile_size) {
-	Vector2 pos = ConvertTileIDToPos(number, { tileset_size.x / tile_size.x, tileset_size.y / tile_size.y });
-	return { pos.x * tile_size.x, pos.y * tile_size.y, pos.x * tile_size.x + tile_size.x, pos.y * tile_size.y + tile_size.y };
-}
-
-void RenderTile(Image* tileset, int number, Vector2 tileset_size, Vector2 tile_size, Vector2 position) {
-	ImageCrop(tileset, CalculateTileCropDimentions(number, tileset_size, tile_size));
-	Texture2D texture = LoadTextureFromImage(*tileset);
-	DrawTexture(texture, position.x, position.y, WHITE);
-	UnloadTexture(texture);
-}
-
-inline void RenderTile(Texture2D texture, Vector2 position) {
-	DrawTexture(texture, position.x + offset.x, position.y + offset.y, WHITE);
-}
-Image tileset1 = LoadImage("resources/tile.png");
-
-void RenderTileLayer(char* tile_set, std::vector<int> tileset_data, Vector2 position, Vector2 size) {
-	
-	for (int y = 0; y < size.y; y++) {
-		for (int x = 0; x < size.x; x++) {
-			RenderTile(&tileset1, tileset_data[y + x], { static_cast<float>(tileset1.width), static_cast<float>(tileset1.height) }, { 32, 32 }, { static_cast<float>(x), static_cast<float>(y) });
-		}
-	}
-}
-
-std::vector<int> LoadTileMap(char* file) {
-	std::stringstream data(LoadFileContent(file));
-	std::string segment;
-	std::vector<int> seglist;
-
-	while (std::getline(data, segment, ','))
-	{
-		seglist.push_back(stoi(segment));
-	}
-
-	return seglist;
-}
+//std::string LoadFileContent(char* file) {
+//	std::string total_file;
+//
+//	std::string line;
+//	std::ifstream f(file);
+//	while (std::getline(f, line))
+//	{
+//		total_file.append(line);
+//	}
+//	f.close();
+//
+//	return total_file;
+//}
+//
+//inline Vector2 ConvertTileIDToPos(int number, Vector2 tile_count) {
+//	//return { number / tile_count.x, number % tile_count.x };
+//	return {};
+//}
+//
+//Rectangle CalculateTileCropDimentions(int number, Vector2 tileset_size, Vector2 tile_size) {
+//	Vector2 pos = ConvertTileIDToPos(number, { tileset_size.x / tile_size.x, tileset_size.y / tile_size.y });
+//	return { pos.x * tile_size.x, pos.y * tile_size.y, pos.x * tile_size.x + tile_size.x, pos.y * tile_size.y + tile_size.y };
+//}
+//
+//void RenderTile(Image* tileset, int number, Vector2 tileset_size, Vector2 tile_size, Vector2 position) {
+//	/*ImageCrop(tileset, CalculateTileCropDimentions(number, tileset_size, tile_size));
+//	Texture2D texture = LoadTextureFromImage(*tileset);*/
+//	//DrawTexture(texture, position.x, position.y, WHITE);
+//	DrawRectangle(position.x, position.y, 40, 40, MAROON);
+//	//UnloadTexture(texture);
+//}
+//
+//inline void RenderTile(Texture2D texture, Vector2 position) {
+//	DrawTexture(texture, position.x + offset.x, position.y + offset.y, WHITE);
+//}
+//Image tileset1 = LoadImage("resources/tile.png");
+//
+//void RenderTileLayer(char* tile_set, std::vector<int> tileset_data, Vector2 position, Vector2 size) {
+//	
+//	for (int y = 0; y < size.y; y++) {
+//		for (int x = 0; x < size.x; x++) {
+//			RenderTile(&tileset1, tileset_data[y + x], { static_cast<float>(tileset1.width), static_cast<float>(tileset1.height) }, { 32, 32 }, { static_cast<float>(x), static_cast<float>(y) });
+//		}
+//	}
+//}
+//
+//std::vector<int> LoadTileMap(char* file) {
+//	std::stringstream data(LoadFileContent(file));
+//	std::string segment;
+//	std::vector<int> seglist;
+//
+//	while (std::getline(data, segment, ','))
+//	{
+//		seglist.push_back(stoi(segment));
+//	}
+//
+//	return seglist;
+//}

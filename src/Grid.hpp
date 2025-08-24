@@ -17,7 +17,7 @@ struct Tile {
 
 struct TileTemplate {
 	char* name;
-	Texture2D image;
+	Texture image;
 	int id;
 };
 
