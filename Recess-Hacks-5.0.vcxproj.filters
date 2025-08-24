@@ -71,9 +71,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\BankAccount.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\extras\FA6FreeSolidFontData.h">
       <Filter>Header Files</Filter>
     </ClInclude>

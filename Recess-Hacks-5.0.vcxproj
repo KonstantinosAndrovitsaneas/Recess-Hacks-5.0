@@ -174,7 +174,6 @@
     <ClInclude Include="include\raytile\external\PUGIXML\pugixml.hpp" />
     <ClInclude Include="include\raytile\ray_tilemap.h" />
     <ClInclude Include="src\BankAccount.h" />
-    <ClInclude Include="src\BankAccount.hpp" />
     <ClInclude Include="src\Events.h" />
     <ClInclude Include="src\extras\FA6FreeSolidFontData.h" />
     <ClInclude Include="src\extras\IconsFontAwesome6.h" />
