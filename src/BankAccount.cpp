@@ -51,37 +51,55 @@ void RenderBankAccounts() {
 	ImGui::Begin("Bank Account Details", NULL, ImGuiWindowFlags_NoCollapse);
 
 	static int item_selected_idx = 0;
-	static bool item_highlight = false;
-	int item_highlighted_idx = -1; // Here we store our highlighted data as an index.
+	//int item_highlighted_idx = -1; // Here we store our highlighted data as an index.
 	if (ImGui::Button("Open Account")) {
 		ImGui::OpenPopup("Create Account");
 		
 	}
 	
+	//BTW I USED CHATGPT TO FORMAT THIS AFTERWARDS CAUSE THERE WAS A TON OF RANDOM SPACES - WAHEED
 	
-	
-	
-if (ImGui::BeginListBox("Accounts list"))
+	if (ImGui::BeginListBox("Accounts list"))
 	{
-		for (int i = 0; i < accounts.size(); i++) {
-			const char* label = accounts[i].name.c_str();	
-				bool is_selected = (item_selected_idx == i);
-				if (ImGui::Selectable(label, is_selected))
-					item_selected_idx = i;
-				if (item_highlight && ImGui::IsItemHovered())
-					item_highlighted_idx = i;
+		static bool second_button = false;
 
-				// Set the initial focus when opening the combo (scrolling + keyboard navigation focus)
-				if (is_selected)
-			
-					ImGui::SetItemDefaultFocus();
-				
-			
-			
+		for (int i = 0; i < accounts.size(); i++) {
+			bool is_selected = (item_selected_idx == i);
+
+			if (ImGui::Selectable(accounts[i].name.c_str(), is_selected)) {
+				item_selected_idx = i;
+				second_button = true; 
+				selected_account_id = i;
+				std::cout << "Selected account: "
+					<< accounts[selected_account_id].name
+					<< " with balance: "
+					<< accounts[selected_account_id].get_balance()
+					<< std::endl;
+			}
 		}
+
 		ImGui::EndListBox();
+
+		if (second_button && selected_account_id >= 0) {
+			if (ImGui::Button("Deposit")) {
+				float amount;
+				std::cout << "How much? ";
+				std::cin >> amount;
+
+				accounts[selected_account_id].deposit(amount);
+			}
+			if (ImGui::Button("Withdraw")) {
+				float amount;
+				std::cout << "How much? ";
+				std::cin >> amount;
+				accounts[selected_account_id].withdraw(amount);	
+			
+			}
+		
+		
+		}
 	}
-	
+
 
 	//ImGui::SetNextWindowSize(ImVec2(400, 300)); // Set desired window size
 	//ImGui::SetNextWindowPos(ImVec2((GetScreenWidth() - 400) * 0.5, (GetScreenHeight() - 300) * 0.5)); // Center position
