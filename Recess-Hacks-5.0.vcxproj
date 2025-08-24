@@ -113,7 +113,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>winmm.lib;raylib.lib;$(CoreLibraryDependencies);%(AdditionalDependencies);</AdditionalDependencies>
+      <AdditionalDependencies>winmm.lib;raylib.lib;rayTileMapLib.lib;$(CoreLibraryDependencies);%(AdditionalDependencies);</AdditionalDependencies>
       <AdditionalLibraryDirectories>lib</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
@@ -130,14 +130,17 @@
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>lib</AdditionalLibraryDirectories>
-      <AdditionalDependencies>winmm.lib;raylib.lib;$(CoreLibraryDependencies);%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>winmm.lib;raylib.lib;rayTileMapLib.lib;$(CoreLibraryDependencies);%(AdditionalDependencies);</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\Downloads\raytilemap-main\rayTileMapLib\include\external\PUGIXML\pugixml.cpp" />
+    <ClCompile Include="include\raytile\external\PUGIXML\pugixml.cpp" />
     <ClCompile Include="src\BankAccount.cpp" />
     <ClCompile Include="src\Events.cpp" />
     <ClCompile Include="src\Grid.cpp" />
     <ClCompile Include="src\Grid.hpp" />
+    <ClCompile Include="src\GridRender.cpp" />
     <ClCompile Include="src\imgui.cpp" />
     <ClCompile Include="src\imgui_demo.cpp" />
     <ClCompile Include="src\imgui_draw.cpp" />
@@ -148,10 +151,12 @@
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\MainMenu.cpp" />
     <ClCompile Include="src\rlImGui.cpp" />
-    <ClCompile Include="src\Scene.cpp" />
     <ClCompile Include="src\Shop.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\Downloads\raytilemap-main\rayTileMapLib\include\external\PUGIXML\pugiconfig.hpp" />
+    <ClInclude Include="..\..\..\Downloads\raytilemap-main\rayTileMapLib\include\external\PUGIXML\pugixml.hpp" />
+    <ClInclude Include="..\..\..\Downloads\raytilemap-main\rayTileMapLib\include\ray_tilemap.h" />
     <ClInclude Include="include\rapidjson\memorystream.h" />
     <ClInclude Include="include\rapidjson\ostreamwrapper.h" />
     <ClInclude Include="include\rapidjson\pointer.h" />
@@ -163,6 +168,11 @@
     <ClInclude Include="include\rapidjson\stringbuffer.h" />
     <ClInclude Include="include\rapidjson\writer.h" />
     <ClInclude Include="include\raylib\raylib.h" />
+    <ClInclude Include="include\raylib\raymath.h" />
+    <ClInclude Include="include\raylib\rlgl.h" />
+    <ClInclude Include="include\raytile\external\PUGIXML\pugiconfig.hpp" />
+    <ClInclude Include="include\raytile\external\PUGIXML\pugixml.hpp" />
+    <ClInclude Include="include\raytile\ray_tilemap.h" />
     <ClInclude Include="src\BankAccount.h" />
     <ClInclude Include="src\Events.h" />
     <ClInclude Include="src\extras\FA6FreeSolidFontData.h" />
