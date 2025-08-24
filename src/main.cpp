@@ -13,7 +13,7 @@ int main() {
     //Uncommenting the statement below will cause a linker error - i dont know how to fix it - i've spent too many hours trying - help me please. - Waheed
    //FOR SOME REASON INVENTORY IS ALSO CAUSING A LINKER ERROR SO FUCK THAT IM NOT USING IT ANYMORE - Waheed
     
-    Investment* nike = new Investment(1000.0, 0.07, "Nike");
+    //Investment* nike = new Investment(1000.0, 0.07, "Nike");
 
     
     
