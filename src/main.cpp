@@ -1,8 +1,9 @@
 #include <iostream>
 //#include "test.cpp"
 #include "BankAccount.hpp"
-//#include "Investment.h"
 
+#include "Inventory.h"
+#include "Investment.h"
 #include "raylib/raylib.h"
 #include "raylib/raymath.h"
 
@@ -13,6 +14,13 @@
 
 
 int main() {
+    Inventory inventory;
+	Investment Nike(1000, 0.07, std::string("Nike"), inventory);   
+    
+
+    
+    
+    
     const int screenWidth = 800;
     const int screenHeight = 450;
 
@@ -30,26 +38,40 @@ int main() {
     
     Grid grid;
 
-    struct Tile tile;
+    Tile tile;
 
-    tile.id = 1;
+    Tile offices;
 
-    grid.PlaceTile({5, 5, 5}, tile);
-    grid.PlaceTile({ 0, 0, 0 }, tile);
-    grid.PlaceTile({ 10, 10, 10 }, tile);
+    offices.id = 1;
 
-    struct Tile* t = grid.GetTile({ 5, 5, 5 });
+    offices.name = "Nike";
 
-    std::cout << t->id << "\n";
-    t->id = 5;
-    std::cout << t->id << "\n";
+    tile.id = 2;
+
+    grid.PlaceTile({1,1,1}, tile);
+    grid.PlaceTile({ 2,2,1 }, offices);
+
+    Tile* t = grid.GetTile({ 5,5,5 });
+    if (t != nullptr) {
+        std::cout << t->id << "\n";
+        t->id = 5;
+        std::cout << t->id << "\n";
+    }
+    else {
+        std::cout << "Tile not found!\n";
+    }
+
 
     // Main game loop
     while (!WindowShouldClose())    // Detect window close button or ESC key
     {
         // Update
         //----------------------------------------------------------------------------------
-       
+
+
+
+
+
         //----------------------------------------------------------------------------------
 
         // Draw
@@ -59,23 +81,88 @@ int main() {
         ClearBackground(RAYWHITE);
 
 
-        //grid.RenderTileSet();
+        grid.RenderTileSet();
 
         rlImGuiBegin();
+        Tile* clickedTile = grid.GetClickedTile();
 
         // show ImGui Content
         bool open = true;
         ImGui::ShowDemoWindow(&open);
 
+        ImVec2 windowPos;
+
         open = true;
-        if (ImGui::Begin("Test Window", &open))
-        {
+
+        if (clickedTile != nullptr) {
+
+            ImVec2 windowPos;
+            windowPos.x = clickedTile->position.x * 80.0 + 10;
+            windowPos.y = clickedTile->position.y * 80.0 + 10;
+
+            ImGui::SetNextWindowPos(windowPos, ImGuiCond_Always);
+
+            if (ImGui::Begin("Test Window", &open))
+            {
+
+                ImGui::Text("Tile ID: %d", clickedTile->id);
+                ImGui::Text("Position: (%d, %d, %d)",
+                    clickedTile->position.x,
+                    clickedTile->position.y,
+                    clickedTile->position.z);
+                
+                
+                if (ImGui::Button("Buy")) {
+                                    
+					
+    
+                
+                }
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                ImGui::End();
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            }
+
+            else {
+            
+                windowPos.x = 1000;
+                windowPos.y = 1000;
+				ImGui::SetNextWindowPos(windowPos, ImGuiCond_Always);
+            
+            }
+
             /*ImGui::TextUnformatted(ICON_FA_JEDI);
 
             rlImGuiImage(&image);*/
         }
-        ImGui::End();
-
+    
         // end ImGui Content
         rlImGuiEnd();
 

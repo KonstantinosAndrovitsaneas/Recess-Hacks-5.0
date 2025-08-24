@@ -24,3 +24,4 @@ void Inventory::sellInvestment(const Investment& investment, BankAccount& accoun
 	}
 
 }
+

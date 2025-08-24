@@ -1,7 +1,7 @@
 #pragma once
 #include <vector>
 #include "raylib/raylib.h"
-
+#include <iostream>
 struct Vec3 {
 	int x;
 	int y;
@@ -12,6 +12,7 @@ struct Tile {
 	Texture2D image;
 	struct Vec3 position;
 	int id;
+	std::string name;
 };
 
 struct TileTemplate {
@@ -37,6 +38,9 @@ public:
 
 	void RenderTileSet();
 
+	Tile* GetClickedTile();
 private:
 	std::vector<struct Tile> data;
+	Tile* clickedTile = nullptr;
+
 };
