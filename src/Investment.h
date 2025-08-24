@@ -8,11 +8,11 @@ class Investment {
 public:
     double capital;
     double growth_rate;
-    std::string name;
+    const char* name;
 
     static std::vector<Investment*> allInvestments;
 
-    Investment(double new_capital, double new_growth_rate, const std::string& new_name);
+    Investment(double new_capital, double new_growth_rate, const char*);
 
     double update_value();
     std::string get_name() const;

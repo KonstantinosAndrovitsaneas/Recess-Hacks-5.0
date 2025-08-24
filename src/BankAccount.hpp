@@ -1,14 +1,14 @@
 #pragma once
-
+#include <string>
 class BankAccount{
 public:
-	const char* name;
+		std::string name;
 
 	BankAccount(
-		const char* name,
+		std::string name,
 		double new_balance
 	);
-
+	std::string get_name();
 	double get_balance();
 	void deposit(double amount);
 	void withdraw(double amount);
