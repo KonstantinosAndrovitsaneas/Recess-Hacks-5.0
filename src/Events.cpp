@@ -1,5 +1,10 @@
 #include "Events.h"
 #include <iostream>
+#include "rlImGui.h"
+#include "imgui.h"
+#include "BankAccount.hpp"
+#include "Investment.h"
+#include "Inventory.h"
 
 Events::Events(
 	std::string new_message,
@@ -11,7 +16,7 @@ void Events::emergency_event(BankAccount& account) {
 
 	std::cout << message << std::endl;
 
-	if (ImGui::Button(amount)) {
+	if (ImGui::Button(std::to_string(amount).c_str())) {
 		
 		account.withdraw(amount);
 
@@ -20,7 +25,7 @@ void Events::emergency_event(BankAccount& account) {
 
 }
 
-
+/*
 void Events::investment_event(BankAccount& account,Inventory& inventory, Investment& investment1, Investment& investment2) {
 	std::cout << message << std::endl;
 	if (ImGui::Button("Option 1")) {
@@ -32,3 +37,4 @@ void Events::investment_event(BankAccount& account,Inventory& inventory, Investm
 		inventory.buy(investment2);
 		account.withdraw(investment1.capital());
 	}
+	*/

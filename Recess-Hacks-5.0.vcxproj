@@ -135,6 +135,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\BankAccount.cpp" />
+    <ClCompile Include="src\Events.cpp" />
     <ClCompile Include="src\Grid.cpp" />
     <ClCompile Include="src\Grid.hpp" />
     <ClCompile Include="src\imgui.cpp" />
@@ -143,6 +144,7 @@
     <ClCompile Include="src\imgui_tables.cpp" />
     <ClCompile Include="src\imgui_widgets.cpp" />
     <ClCompile Include="src\Inventory.cpp" />
+    <ClCompile Include="src\Investment.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\MainMenu.cpp" />
     <ClCompile Include="src\rlImGui.cpp" />
@@ -161,16 +163,30 @@
     <ClInclude Include="include\rapidjson\stringbuffer.h" />
     <ClInclude Include="include\rapidjson\writer.h" />
     <ClInclude Include="include\raylib\raylib.h" />
+    <ClInclude Include="src\BankAccount.h" />
     <ClInclude Include="src\BankAccount.hpp" />
+    <ClInclude Include="src\Events.h" />
     <ClInclude Include="src\extras\FA6FreeSolidFontData.h" />
     <ClInclude Include="src\extras\IconsFontAwesome6.h" />
+    <ClInclude Include="src\imconfig.h" />
+    <ClInclude Include="src\imgui.h" />
+    <ClInclude Include="src\imgui_impl_raylib.h" />
+    <ClInclude Include="src\imgui_internal.h" />
+    <ClInclude Include="src\imstb_rectpack.h" />
+    <ClInclude Include="src\imstb_textedit.h" />
+    <ClInclude Include="src\imstb_truetype.h" />
+    <ClInclude Include="src\Inventory.h" />
+    <ClInclude Include="src\Investment.h" />
     <ClInclude Include="src\rlImGui.h" />
     <ClInclude Include="src\rlImGuiColors.h" />
+    <ClInclude Include="src\Shop.hpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="include\rapidjson\Shop.hpp.txt" />
   </ItemGroup>
   <ItemGroup>
+    <None Include=".gitignore" />
+    <None Include="imgui.ini" />
     <None Include="resources\map.csv" />
   </ItemGroup>
   <ItemGroup>

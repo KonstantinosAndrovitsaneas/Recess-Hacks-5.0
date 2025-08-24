@@ -13,7 +13,8 @@ class Events
 
 	);
 
-
+	
 	void emergency_event(BankAccount& account);
-	void investment_event(BankAccount& account, Inventory& inventory, Investment& investment1, Investment& investment2);
-};
+	//void investment_event(BankAccount& account, Inventory& inventory, Investment& investment1, Investment& investment2);
+	
+	};

@@ -27,13 +27,12 @@ void BankAccount::deposit(double amount) {
 }
 
 void BankAccount::withdraw(double amount) {
-	if (amount > balance) {
-		std::cout << "Insufficient funds" << std::endl;
-	}
-	else {
+	if (amount <= balance) {
 		balance -= amount;
 	}
+
 }
+
 
 inline void OpenAccount(const char* name) {
 	accounts.emplace_back(BankAccount(name, 0));
@@ -81,6 +80,7 @@ void RenderBankAccounts() {
 
 		ImGui::EndListBox();
 		static float amount = 0;
+		static bool show_warning = false;
 		if (second_button && selected_account_id >= 0) {
 			static int third_button = 0;
 			if (ImGui::Button("Deposit")) {
@@ -94,6 +94,7 @@ void RenderBankAccounts() {
 				ImGui::InputFloat("Amount", &amount);
 				if (ImGui::Button("Confirm Deposit")) {
 					accounts[selected_account_id].deposit(amount);
+					
 				}
 			}
 			
@@ -101,7 +102,17 @@ void RenderBankAccounts() {
 				ImGui::InputFloat("Amount", &amount);
 				if (ImGui::Button("Confirm Withdraw")) {
 					accounts[selected_account_id].withdraw(amount);
+					if (accounts[selected_account_id].get_balance() < amount) {
+						show_warning = true;
+					}
+					else {
+						show_warning = false;
+					}
 				}
+			}
+			if (show_warning == true) {
+				ImGui::SetCursorPos(ImVec2(150, 200));
+				ImGui::Text("Insufficient funds!");
 			}
 		}
 	}
