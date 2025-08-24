@@ -1,10 +1,11 @@
 #pragma once
 
-class BankAccount{
-
-private:
-	double balance;
+class BankAccount
+{
 public:
+
+	double balance;
+
 	BankAccount(
 		double new_balance
 	);

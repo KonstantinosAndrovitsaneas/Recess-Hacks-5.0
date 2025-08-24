@@ -1,23 +1,24 @@
 #pragma once
-#include <iostream>
-#include "Inventory.h"
-struct Inventory;
+#include <string>
+#include <vector>
+
+class BankAccount;
 
 class Investment {
 public:
-	double capital;
-	double growth_rate;
-	std::string& name;
-	Inventory& inventory;
-	Investment(
+    double capital;
+    double growth_rate;
+    std::string name;
 
-		double new_capital,
-		double new_growth_rate,
-		std::string& new_name,
-		Inventory& inventory
-	);
+    // Static vector to hold all investments
+    static std::vector<Investment*> allInvestments;
 
-	double update_value();
-	double get_capital();
-	std::string get_name();
+    Investment(double new_capital, double new_growth_rate, const std::string& new_name);
+
+    double update_value();
+    std::string get_name() const;
+
+    // Static helper to find by name
+    static Investment* getInvestmentByName(const std::string& name);
+    static void buyInvestment(Investment* investment, BankAccount& account);
 };

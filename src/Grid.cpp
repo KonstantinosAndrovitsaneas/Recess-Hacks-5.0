@@ -81,7 +81,6 @@ void Grid::RenderTileSet() {
 			over_tile = true;
 			if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
 				clickedTile = &tile;
-
 			}
 
 		}

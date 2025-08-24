@@ -1,24 +1,20 @@
 #include <iostream>
-//#include "test.cpp"
 #include "BankAccount.hpp"
-
-#include "Inventory.h"
 #include "Investment.h"
 #include "raylib/raylib.h"
 #include "raylib/raymath.h"
-
+#include <string>
 #include "imgui.h"
 #include "rlImGui.h"
-
 #include "Grid.hpp"
 
 
 int main() {
-    Inventory inventory;
-	Investment Nike(1000, 0.07, std::string("Nike"), inventory);   
+    //Uncommenting the statement below will cause a linker error - i dont know how to fix it - i've spent too many hours trying - help me please. - Waheed
+   //FOR SOME REASON INVENTORY IS ALSO CAUSING A LINKER ERROR SO FUCK THAT IM NOT USING IT ANYMORE - Waheed
     
+    Investment* nike = new Investment(1000.0, 0.07, "Nike");
 
-    
     
     
     const int screenWidth = 800;
@@ -114,7 +110,7 @@ int main() {
                 
                 if (ImGui::Button("Buy")) {
                                     
-					
+                    //clickedTile->name;
     
                 
                 }
