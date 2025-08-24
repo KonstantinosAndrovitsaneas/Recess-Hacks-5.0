@@ -46,3 +46,15 @@ private:
 };
 
 void CalculateGridPosition();
+
+inline Vector2 ConvertTileIDToPos(int number, Vector2 tile_count);
+
+Rectangle CalculateTileCropDimentions(int number, Vector2 tileset_size, Vector2 tile_size);
+
+void RenderTile(Image tileset, int number, Vector2 tileset_size, Vector2 tile_size, Vector2 position);
+
+inline void RenderTile(Texture2D texture, Vector2 position);
+
+void RenderTileLayer(char* tile_set, std::vector<int> tileset_data, Vector2 position, Vector2 size);
+
+std::vector<int> LoadTileMap(char* file);

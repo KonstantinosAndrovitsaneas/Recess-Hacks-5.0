@@ -119,8 +119,8 @@ std::string LoadFileContent(char* file) {
 	std::string total_file;
 
 	std::string line;
-	std::ifstream f("example.txt");
-	while (getline(f, line))
+	std::ifstream f(file);
+	while (std::getline(f, line))
 	{
 		total_file.append(line);
 	}
@@ -129,52 +129,46 @@ std::string LoadFileContent(char* file) {
 	return total_file;
 }
 
-//void RenderTileLayer(char* tile_set, std::vector<int> tileset_data, Vector2 position, Vector2 size) {
-//	Image tileset = LoadImage("resources/parrots.png");
-//	/*DrawRectangle(position.x * 80 + offset.x, position.y * 80 + offset.y, 80, 80, MAROON);*/
-//	//DrawTexture(tile.image, tile.position.x * 80, tile.position.y * 80, WHITE);
-//	
-//	for (int y = 0; y < size.y; y++) {
-//		for (int x = 0; x < size.x; x++) {
-//			tileset_data[y + x];
-//			ImageCrop(&tileset, { 100, 10, 280, 380 });
-//			Texture2D texture = LoadTextureFromImage(tileset);
-//			RenderTile(texture, , Vector2 position)
-//		}
-//	}
-//}
-//
-//inline Vector2 ConvertTileIDToPos(int number, Vector2 tile_count) {
-//	return { number / tile_count.x, number % tile_count.x };
-//}
-//
-//Rectangle CalculateTileCropDimentions(int number, Vector2 tileset_size, Vector2 tile_size) {
-//	Vector2 pos = ConvertTileIDToPos(number, {tileset_size.x / tile_size.x, tileset_size.y / tile_size.y })
-//	return {}
-//}
-//
-//void RenderTile(Image tileset, int number, Vector2 Tileset_size, Vector2 position) {
-//	/*DrawRectangle(position.x * 80 + offset.x, position.y * 80 + offset.y, 80, 80, MAROON);*/
-//	//DrawTexture(tile.image, tile.position.x * 80, tile.position.y * 80, WHITE);
-//	Vector4 tileset_size;
-//	ImageCrop(&tileset, { 100, 10, 280, 380 });
-//	Texture2D texture = LoadTextureFromImage(tileset);
-//	DrawTexture(texture, position.x, position.y, WHITE);
-//}
-//
-//inline void RenderTile(Texture2D texture, Vector2 position) {
-//	DrawTexture(texture, position.x + offset.x, position.y + offset.y, WHITE);
-//}
-//
-//std::vector<int> LoadTileMap(char* file) {
-//	std::stringstream data = LoadFileContent(file).c_str();
-//	std::string segment;
-//	std::vector<int> seglist;
-//
-//	while (getline(data, segment, ','))
-//	{
-//		seglist.push_back(stoi(segment));
-//	}
-//
-//	return seglist;
-//}
+inline Vector2 ConvertTileIDToPos(int number, Vector2 tile_count) {
+	//return { number / tile_count.x, number % tile_count.x };
+	return {};
+}
+
+Rectangle CalculateTileCropDimentions(int number, Vector2 tileset_size, Vector2 tile_size) {
+	Vector2 pos = ConvertTileIDToPos(number, { tileset_size.x / tile_size.x, tileset_size.y / tile_size.y });
+	return { pos.x * tile_size.x, pos.y * tile_size.y, pos.x * tile_size.x + tile_size.x, pos.y * tile_size.y + tile_size.y };
+}
+
+void RenderTile(Image* tileset, int number, Vector2 tileset_size, Vector2 tile_size, Vector2 position) {
+	ImageCrop(tileset, CalculateTileCropDimentions(number, tileset_size, tile_size));
+	Texture2D texture = LoadTextureFromImage(*tileset);
+	DrawTexture(texture, position.x, position.y, WHITE);
+	UnloadTexture(texture);
+}
+
+inline void RenderTile(Texture2D texture, Vector2 position) {
+	DrawTexture(texture, position.x + offset.x, position.y + offset.y, WHITE);
+}
+Image tileset1 = LoadImage("resources/tile.png");
+
+void RenderTileLayer(char* tile_set, std::vector<int> tileset_data, Vector2 position, Vector2 size) {
+	
+	for (int y = 0; y < size.y; y++) {
+		for (int x = 0; x < size.x; x++) {
+			RenderTile(&tileset1, tileset_data[y + x], { static_cast<float>(tileset1.width), static_cast<float>(tileset1.height) }, { 32, 32 }, { static_cast<float>(x), static_cast<float>(y) });
+		}
+	}
+}
+
+std::vector<int> LoadTileMap(char* file) {
+	std::stringstream data(LoadFileContent(file));
+	std::string segment;
+	std::vector<int> seglist;
+
+	while (std::getline(data, segment, ','))
+	{
+		seglist.push_back(stoi(segment));
+	}
+
+	return seglist;
+}
