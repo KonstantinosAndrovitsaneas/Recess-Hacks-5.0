@@ -1,5 +1,5 @@
 #include <iostream>
-#include "BankAccount.hpp"
+#include "BankAccount.h"
 #include "Investment.h"
 #include "raylib/raylib.h"
 #include "raylib/raymath.h"
@@ -8,6 +8,7 @@
 #include "rlImGui.h"
 #include "Grid.hpp"
 #include "Shop.hpp"
+//#include "BankAccount.hpp"
 
 
 int main() {
@@ -101,24 +102,8 @@ int main() {
                     clickedTile->position.y,
                     clickedTile->position.z);
                 
-                
-                if (ImGui::Button("Buy")) {
-                                    
-                    //clickedTile->name;
-    
-                
-                }
-                
-          
-                
-                
-                
                 ImGui::End();
-
-            
-
-            
-            
+         
             }
 
             else {
@@ -135,7 +120,7 @@ int main() {
         }
 
         RenderShop();
-        RenderBankAccounts();
+        BankAccount::RenderBankAccounts();
     
         // end ImGui Content
         rlImGuiEnd();

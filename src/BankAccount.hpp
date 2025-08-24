@@ -1,6 +1,7 @@
 #pragma once
 #include "raylib/raylib.h"
-
+#include <vector>
+#include <iostream>
 #include <string>
 class BankAccount{
 public:
@@ -17,4 +18,4 @@ public:
 	double balance;
 };
 
-void RenderBankAccounts();
+//void RenderBankAccounts();

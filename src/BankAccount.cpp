@@ -1,15 +1,11 @@
-#include "BankAccount.hpp"
+#include "BankAccount.h"
 #include <iostream>
 #include "imgui.h"
 #include <vector>
 
-std::vector<BankAccount> accounts;
+std::vector<BankAccount> BankAccount::accounts;
 
-BankAccount::BankAccount(
-
-	std::string name,
-	double new_balance
-) 
+BankAccount::BankAccount(std::string name,double new_balance) 
 
 : name(name), balance(new_balance) {}
 	
@@ -34,17 +30,17 @@ void BankAccount::withdraw(double amount) {
 }
 
 
-inline void OpenAccount(const char* name) {
-	accounts.emplace_back(BankAccount(name, 0));
+inline void BankAccount::OpenAccount(const char* name) {
+	BankAccount::accounts.emplace_back(BankAccount(name, 0));
 }
 
-inline void CloseAccount(int id) {
-	accounts.erase(accounts.begin() + id);
+inline void BankAccount::CloseAccount(int id) {
+	BankAccount::accounts.erase(BankAccount::accounts.begin() + id);
 }
 
 static int selected_account_id;
 
-void RenderBankAccounts() {
+void BankAccount::RenderBankAccounts() {
 	bool show_account_creation_dialog = 0;
 
 	ImGui::Begin("Bank Account Details", NULL, ImGuiWindowFlags_NoCollapse);
@@ -62,10 +58,10 @@ void RenderBankAccounts() {
 	{
 		static bool second_button = false;
 		static bool dis_balance = false;
-		for (int i = 0; i < accounts.size(); i++) {
+		for (int i = 0; i < BankAccount::accounts.size(); i++) {
 			bool is_selected = (item_selected_idx == i);
 
-			if (ImGui::Selectable(accounts[i].name.c_str(), is_selected)) {
+			if (ImGui::Selectable(BankAccount::accounts[i].name.c_str(), is_selected)) {
 				item_selected_idx = i;
 				second_button = true; 
 				selected_account_id = i;
@@ -74,7 +70,7 @@ void RenderBankAccounts() {
 		}
 
 		if (dis_balance && selected_account_id >= 0) {
-			ImGui::Text("Account Balance: $%.2f", accounts[selected_account_id].get_balance());
+			ImGui::Text("Account Balance: $%.2f", BankAccount::accounts[selected_account_id].get_balance());
 		
 		}
 
@@ -93,7 +89,7 @@ void RenderBankAccounts() {
 			if (third_button == 1) {
 				ImGui::InputFloat("Amount", &amount);
 				if (ImGui::Button("Confirm Deposit")) {
-					accounts[selected_account_id].deposit(amount);
+					BankAccount::accounts[selected_account_id].deposit(amount);
 					
 				}
 			}
@@ -101,8 +97,8 @@ void RenderBankAccounts() {
 			if (third_button == 2) {
 				ImGui::InputFloat("Amount", &amount);
 				if (ImGui::Button("Confirm Withdraw")) {
-					accounts[selected_account_id].withdraw(amount);
-					if (accounts[selected_account_id].get_balance() < amount) {
+					BankAccount::accounts[selected_account_id].withdraw(amount);
+					if (BankAccount::accounts[selected_account_id].get_balance() < amount) {
 						show_warning = true;
 					}
 					else {
