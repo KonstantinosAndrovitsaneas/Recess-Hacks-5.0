@@ -112,7 +112,7 @@ void RenderBankAccounts() {
 
 		if (ImGui::Button("OK", ImVec2(120, 0)) && account_name[0] != '\0') {
 			OpenAccount(account_name);
-			ImGui::CloseCurrentPopup(); 
+			ImGui::CloseCurrentPopup();
 		}
 		ImGui::SetItemDefaultFocus();
 		ImGui::SameLine();

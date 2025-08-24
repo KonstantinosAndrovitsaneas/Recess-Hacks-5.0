@@ -170,6 +170,12 @@
   <ItemGroup>
     <Text Include="include\rapidjson\Shop.hpp.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="resources\map.csv" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="resources\tile.png" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
