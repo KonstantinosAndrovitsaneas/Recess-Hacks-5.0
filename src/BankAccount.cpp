@@ -62,7 +62,7 @@ void RenderBankAccounts() {
 	if (ImGui::BeginListBox("Accounts list"))
 	{
 		static bool second_button = false;
-
+		static bool dis_balance = false;
 		for (int i = 0; i < accounts.size(); i++) {
 			bool is_selected = (item_selected_idx == i);
 
@@ -70,33 +70,39 @@ void RenderBankAccounts() {
 				item_selected_idx = i;
 				second_button = true; 
 				selected_account_id = i;
-				std::cout << "Selected account: "
-					<< accounts[selected_account_id].name
-					<< " with balance: "
-					<< accounts[selected_account_id].get_balance()
-					<< std::endl;
+				dis_balance = !dis_balance;
 			}
 		}
 
+		if (dis_balance && selected_account_id >= 0) {
+			ImGui::Text("Account Balance: $%.2f", accounts[selected_account_id].get_balance());
+		
+		}
+
 		ImGui::EndListBox();
-
+		static float amount = 0;
 		if (second_button && selected_account_id >= 0) {
+			static int third_button = 0;
 			if (ImGui::Button("Deposit")) {
-				float amount;
-				std::cout << "How much? ";
-				std::cin >> amount;
-
-				accounts[selected_account_id].deposit(amount);
+				third_button = 1;
 			}
 			if (ImGui::Button("Withdraw")) {
-				float amount;
-				std::cout << "How much? ";
-				std::cin >> amount;
-				accounts[selected_account_id].withdraw(amount);	
-			
+				third_button = 2;
 			}
-		
-		
+			
+			if (third_button == 1) {
+				ImGui::InputFloat("Amount", &amount);
+				if (ImGui::Button("Confirm Deposit")) {
+					accounts[selected_account_id].deposit(amount);
+				}
+			}
+			
+			if (third_button == 2) {
+				ImGui::InputFloat("Amount", &amount);
+				if (ImGui::Button("Confirm Withdraw")) {
+					accounts[selected_account_id].withdraw(amount);
+				}
+			}
 		}
 	}
 

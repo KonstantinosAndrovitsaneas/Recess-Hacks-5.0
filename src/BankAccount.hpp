@@ -14,7 +14,6 @@ public:
 	double get_balance();
 	void deposit(double amount);
 	void withdraw(double amount);
-private:
 	double balance;
 };
 

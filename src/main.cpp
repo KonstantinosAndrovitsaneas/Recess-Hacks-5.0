@@ -71,7 +71,7 @@ int main() {
         //CalculateGridPosition();
         grid.RenderTileSet();
 
-        RenderTileLayer((char*)"resources/tile.png", tilemap, { 0, 0 }, { 30, 20 });
+       // RenderTileLayer((char*)"resources/tile.png", tilemap, { 0, 0 }, { 30, 20 });
 
         rlImGuiBegin();
         Tile* clickedTile = grid.GetClickedTile();
