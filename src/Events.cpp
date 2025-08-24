@@ -2,7 +2,7 @@
 #include <iostream>
 #include "rlImGui.h"
 #include "imgui.h"
-#include "BankAccount.hpp"
+#include "BankAccount.h"
 #include "Investment.h"
 #include "Inventory.h"
 
