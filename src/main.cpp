@@ -7,6 +7,7 @@
 #include "imgui.h"
 #include "rlImGui.h"
 #include "Grid.hpp"
+#include "Shop.hpp"
 
 
 int main() {
@@ -17,10 +18,12 @@ int main() {
 
     
     
-    const int screenWidth = 800;
-    const int screenHeight = 450;
+    const int screenWidth = 1200;
+    const int screenHeight = 720;
 
     InitWindow(screenWidth, screenHeight, "raylib [core] example - keyboard input");
+    SetWindowState(FLAG_WINDOW_RESIZABLE);
+
 
     SetTargetFPS(60);               // Set our game to run at 60 frames-per-second
     //--------------------------------------------------------------------------------------
@@ -61,26 +64,16 @@ int main() {
     // Main game loop
     while (!WindowShouldClose())    // Detect window close button or ESC key
     {
-        // Update
-        //----------------------------------------------------------------------------------
-
-
-
-
-
-        //----------------------------------------------------------------------------------
-
-        // Draw
-        //----------------------------------------------------------------------------------
         BeginDrawing();
 
         ClearBackground(RAYWHITE);
 
-
+        //CalculateGridPosition();
         grid.RenderTileSet();
 
         rlImGuiBegin();
         Tile* clickedTile = grid.GetClickedTile();
+
 
         // show ImGui Content
         bool open = true;
@@ -158,6 +151,9 @@ int main() {
 
             rlImGuiImage(&image);*/
         }
+
+        //RenderShop();
+        RenderBankAccounts();
     
         // end ImGui Content
         rlImGuiEnd();

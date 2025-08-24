@@ -44,3 +44,5 @@ private:
 	Tile* clickedTile = nullptr;
 
 };
+
+void CalculateGridPosition();
